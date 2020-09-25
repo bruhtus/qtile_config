@@ -126,18 +126,19 @@ for i in groups:
         #     desc="move focused window to group {}".format(i.name)),
     ])
 
+layout_theme = {
+        "border_width": 2,
+        "margin": 6,
+        "border_focus": "ffffff"
+        }
+
 layouts = [
-    # layout.Max(),
+    layout.MonadTall(**layout_theme),
+    layout.Max(**layout_theme),
     # layout.Stack(num_stacks=2),
-    # Try more layouts by unleashing below layouts.
     # layout.Bsp(),
     # layout.Columns(),
     # layout.Matrix(),
-    layout.MonadTall(
-        #border_focus='#1ed2e6',
-        border_focus='#ffffff',
-        border_witdh= 20,
-        margin= 10),
     # layout.MonadWide(),
     # layout.RatioTile(),
     # layout.Tile(),
