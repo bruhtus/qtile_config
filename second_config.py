@@ -161,28 +161,18 @@ screens = [
                 widget.CurrentLayout(),
                 widget.GroupBox(),
                 widget.Prompt(),
-                widget.Clock(format='%A, %B %d | [%H:%M] '),
-                widget.Sep(),
                 widget.WindowName(),
-                #widget.Chord(
-                    #chords_colors={
-                        #'launch': ("#ff0000", "ffffff"),
-                    #},
-                    #name_transform=lambda name: name.upper(),
-                #),
-                #widget.PulseVolume,
-                widget.CPU(),
-                widget.MemoryGraph(),
-                widget.Sep(),
-                widget.TextBox(
-                    text = 'Net Graph:'
-                    ),
-                widget.NetGraph(interface='auto'),
-                widget.TextBox(
-                    text = 'HDD:'
-                    ),
-                widget.HDDGraph(),
+                widget.Chord(
+                    chords_colors={
+                        'launch': ("#ff0000", "ffffff"),
+                    },
+                    name_transform=lambda name: name.upper(),
+                ),
+                widget.TextBox("default config", name="default"),
+                widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
                 widget.Systray(),
+                widget.Clock(format='%Y-%m-%d %a %I:%M %p'),
+                widget.QuickExit(),
             ],
             24,
         ),
