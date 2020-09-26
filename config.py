@@ -96,7 +96,7 @@ keys = [
     Key([mod, "control"], "z", lazy.to_screen(0),
         desc="Focus to monitor 1"
         ),
-    Key([mod, "control"], "x", lazy.to_screen(0.1),
+    Key([mod, "control"], "x", lazy.to_screen(1),
         desc="Focus to monitor 2"
         ),
 
