@@ -29,7 +29,6 @@ import re
 import socket
 import subprocess
 
-from Xlib import display as xdisplay
 from typing import List  # noqa: F401
 
 from libqtile import bar, layout, widget, hook
@@ -97,7 +96,7 @@ keys = [
     Key([mod, "control"], "z", lazy.to_screen(0),
         desc="Focus to monitor 1"
         ),
-    Key([mod, "control"], "x", lazy.to_screen(1),
+    Key([mod, "control"], "x", lazy.to_screen(0.1),
         desc="Focus to monitor 2"
         ),
 
@@ -155,32 +154,6 @@ widget_defaults = dict(
 )
 extension_defaults = widget_defaults.copy()
 
-def get_num_monitors():
-    num_monitors = 0
-    try:
-        display = xdisplay.Display()
-        screen = display.screen()
-        resources = screen.root.xrandr_get_screen_resources()
-
-        for output in resources.outputs:
-            monitor = display.xrandr_get_output_info(output, resources.config_timestamp)
-            preferred = False
-            if hasattr(monitor, "preferred"):
-                preferred = monitor.preferred
-            elif hasattr(monitor, "num_preferred"):
-                preferred = monitor.num_preferred
-            if preferred:
-                num_monitors += 1
-
-    except Exception as e:
-        # always setup at least one monitor
-        return 1
-
-    else:
-        return num_monitors
-
-num_monitors = get_num_monitors()
-
 screens = [
     Screen(
         top=bar.Bar(
@@ -227,10 +200,6 @@ screens = [
     ),
 ]
 
-if num_monitors > 1:
-    for m in range(num_monitors - 1):
-        screens
-
 # Drag floating layouts.
 mouse = [
     Drag([mod], "Button1", lazy.window.set_position_floating(),
@@ -265,6 +234,11 @@ floating_layout = layout.Floating(float_rules=[
 ])
 auto_fullscreen = True
 focus_on_window_activation = "smart"
+
+@hook.subscribe.startup_once
+def start_once():
+    home = os.path.expanduser('~')
+    subprocess.call([home + '/.config/qtile/autostart.sh'])
 
 # XXX: Gasp! We're lying here. In fact, nobody really uses or cares about this
 # string besides java UI toolkits; you can see several discussions on the
