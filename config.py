@@ -93,10 +93,10 @@ keys = [
         ),
 
     ### Switch focus to specific monitor
-    Key([mod], "z", lazy.to_screen(0),
+    Key([mod, "control"], "z", lazy.to_screen(0),
         desc="Focus to monitor 1"
         ),
-    Key([mod], "x", lazy.to_screen(1),
+    Key([mod, "control"], "x", lazy.to_screen(1),
         desc="Focus to monitor 2"
         ),
 
@@ -162,7 +162,7 @@ screens = [
                 widget.GroupBox(),
                 widget.Prompt(),
                 widget.Clock(format='%A, %B %d | [%H:%M] '),
-                widget.Sep(),
+                widget.Spacer(length=10),
                 widget.WindowName(),
                 #widget.Chord(
                     #chords_colors={
@@ -170,8 +170,19 @@ screens = [
                     #},
                     #name_transform=lambda name: name.upper(),
                 #),
-                #widget.PulseVolume,
                 widget.CPU(),
+                widget.Sep(),
+                widget.TextBox(
+                    text = 'Battery:'
+                    ),
+                widget.Battery(format='{char} {hour:d}:{min:02d}'),
+                widget.TextBox(
+                    text = 'Volume:'
+                    ),
+                widget.Volume(),
+                widget.TextBox(
+                    text = 'Mem:'
+                    ),
                 widget.MemoryGraph(),
                 widget.Sep(),
                 widget.TextBox(
