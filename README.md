@@ -1,7 +1,7 @@
 # Qtile Window Manager Configuration
 
 Qtile is a tling window manager that use python as the basis configuration file. The default configuration may vary depending on your distro, in my case the default configuration file is on /usr/share/doc/qtile/default_config.py (you can search using `locate qtile` but don't forget to do `sudo updatedb` first).
-You can find the info about qtile on [their website](https://qtile.org) or [the documentation](http://docs.qtile.org/en/latest/).
+You can find the info about qtile on [their website](https://qtile.org) or [their documentation](http://docs.qtile.org/en/latest/).
 
 If you're using the default config from /usr/ folder then you need to change ownership of that file using the command below:
 ```bash
