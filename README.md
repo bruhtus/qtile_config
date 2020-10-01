@@ -12,7 +12,7 @@ you can check owner and group by using the command:
 ls -lart
 ```
 in the folder (the owner is on column 3 and the group is on column 4).
-(For more information about change ownership you can see [this article](https://www.howtoforge.com/linux-chown-command/) 
+(For more information about change ownership you can see [this article](https://www.howtoforge.com/linux-chown-command/))
 
 ```bash
 for example:
